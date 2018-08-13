@@ -1,0 +1,1061 @@
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    1
+
+************ OBJECT LISTING ************
+
+FILE NAME: G:\Coding\GTR\gdp_abi\Abi19.c
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+         Abi19.c     1    #include "fxlib.h"
+         Abi19.c     2    #include "stdio.h"
+         Abi19.c     3    #include "revolution.h"
+         Abi19.c     4    
+         Abi19.c     5    unsigned int key;
+         Abi19.c     6    
+         Abi19.c     7    typedef char*(*sc_cpv)(void);
+         Abi19.c     8    const unsigned int sc0135[] = { 0xD201D002, 0x422B0009, 0x80010070, 0x0135 };
+         Abi19.c     9    #define GetVRAMAddress (*(sc_cpv)sc0135)
+         Abi19.c    10    
+         Abi19.c    11    void draw_menu_box(unsigned int x,  unsigned int y, unsigned char str[])
+P   00000000              _draw_menu_box:                  ; function: draw_menu_box
+                                                           ; frame size=80
+    00000000 2FE6                   MOV.L       R14,@-R15
+    00000002 2FD6                   MOV.L       R13,@-R15
+    00000004 2FC6                   MOV.L       R12,@-R15
+    00000006 6D53                   MOV         R5,R13
+         Abi19.c    12    {       
+         Abi19.c    13            
+         Abi19.c    14            char * vram = GetVRAMAddress();
+    00000008 DE90                   MOV.L       L497,R14   ; _sc0135
+    0000000A 6C43                   MOV         R4,R12
+    0000000C 2FB6                   MOV.L       R11,@-R15
+    0000000E 2FA6                   MOV.L       R10,@-R15
+    00000010 2F96                   MOV.L       R9,@-R15
+    00000012 2F86                   MOV.L       R8,@-R15
+    00000014 4F22                   STS.L       PR,@-R15
+    00000016 7FFC                   ADD         #-4,R15
+    00000018 4E0B                   JSR         @R14
+    0000001A 2F62                   MOV.L       R6,@R15
+         Abi19.c    15            
+         Abi19.c    16            int width = 49;
+         Abi19.c    17            int height = 9;
+         Abi19.c    18            
+         Abi19.c    19            //Headline
+         Abi19.c    20            CoolText(x+2,y+2,  FONT_SIX, str, vram);
+    0000001C 2F06                   MOV.L       R0,@-R15
+    0000001E E601                   MOV         #1,R6
+    00000020 D38B                   MOV.L       L497+4,R3  ; _CoolText
+    00000022 6E03                   MOV         R0,R14
+    00000024 57F1                   MOV.L       @(4,R15),R7
+    00000026 65D3                   MOV         R13,R5
+    00000028 7502                   ADD         #2,R5
+    0000002A 64C3                   MOV         R12,R4
+    0000002C 430B                   JSR         @R3
+    0000002E 7402                   ADD         #2,R4
+         Abi19.c    21            //Upper Box Line
+         Abi19.c    22            DrawLine(x, y, x+width,  y, vram, 1);           
+    00000030 DB88                   MOV.L       L497+8,R11 ; _DrawLine
+    00000032 67D3                   MOV         R13,R7
+    00000034 E801                   MOV         #1,R8
+    00000036 6AC3                   MOV         R12,R10
+    00000038 2F86                   MOV.L       R8,@-R15
+    0000003A 65D3                   MOV         R13,R5
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    2
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    0000003C 2FE6                   MOV.L       R14,@-R15
+    0000003E 7A31                   ADD         #49,R10
+    00000040 66A3                   MOV         R10,R6
+    00000042 4B0B                   JSR         @R11
+    00000044 64C3                   MOV         R12,R4
+         Abi19.c    23            //Lower Box Line
+         Abi19.c    24            DrawLine(x, y+height, x+width, y+height, vram, 1);      
+    00000046 69D3                   MOV         R13,R9
+    00000048 2F86                   MOV.L       R8,@-R15
+    0000004A 66A3                   MOV         R10,R6
+    0000004C 2FE6                   MOV.L       R14,@-R15
+    0000004E 7909                   ADD         #9,R9
+    00000050 6793                   MOV         R9,R7
+    00000052 6593                   MOV         R9,R5
+    00000054 4B0B                   JSR         @R11
+    00000056 64C3                   MOV         R12,R4
+         Abi19.c    25            //Left Box Line
+         Abi19.c    26            DrawLine(x, y, x, y+height, vram, 1);   
+    00000058 2F86                   MOV.L       R8,@-R15
+    0000005A 6793                   MOV         R9,R7
+    0000005C 2FE6                   MOV.L       R14,@-R15
+    0000005E 66C3                   MOV         R12,R6
+    00000060 65D3                   MOV         R13,R5
+    00000062 4B0B                   JSR         @R11
+    00000064 64C3                   MOV         R12,R4
+         Abi19.c    27            //Right Box Line
+         Abi19.c    28            DrawLine(x+width, y, x+width, y+height, vram, 1);       
+    00000066 6793                   MOV         R9,R7
+    00000068 2F86                   MOV.L       R8,@-R15
+    0000006A 66A3                   MOV         R10,R6
+    0000006C 2FE6                   MOV.L       R14,@-R15
+    0000006E 65D3                   MOV         R13,R5
+    00000070 4B0B                   JSR         @R11
+    00000072 64A3                   MOV         R10,R4
+         Abi19.c    29            //Right Box Shadow Line
+         Abi19.c    30            DrawLine(x+width+1, y, x+width+1, y+height, vram, 1);   
+    00000074 2F86                   MOV.L       R8,@-R15
+    00000076 6793                   MOV         R9,R7
+    00000078 2FE6                   MOV.L       R14,@-R15
+    0000007A 66A3                   MOV         R10,R6
+    0000007C 7601                   ADD         #1,R6
+    0000007E E02C                   MOV         #44,R0
+    00000080 0F64                   MOV.B       R6,@(R0,R15)
+    00000082 65D3                   MOV         R13,R5
+    00000084 E02C                   MOV         #44,R0
+    00000086 4B0B                   JSR         @R11
+    00000088 04FC                   MOV.B       @(R0,R15),R4
+         Abi19.c    31    
+         Abi19.c    32            DrawAll(vram);
+    0000008A D373                   MOV.L       L497+12,R3 ; _DrawAll
+    0000008C 430B                   JSR         @R3
+    0000008E 64E3                   MOV         R14,R4
+         Abi19.c    33    
+         Abi19.c    34            memset(vram, 0, 0);
+    00000090 D272                   MOV.L       L497+16,R2 ; _memset
+    00000092 E600                   MOV         #0,R6
+    00000094 6563                   MOV         R6,R5
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    3
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    00000096 64E3                   MOV         R14,R4
+    00000098 7F30                   ADD         #48,R15
+    0000009A 4F26                   LDS.L       @R15+,PR
+    0000009C 68F6                   MOV.L       @R15+,R8
+    0000009E 69F6                   MOV.L       @R15+,R9
+    000000A0 6AF6                   MOV.L       @R15+,R10
+    000000A2 6BF6                   MOV.L       @R15+,R11
+    000000A4 6CF6                   MOV.L       @R15+,R12
+    000000A6 6DF6                   MOV.L       @R15+,R13
+    000000A8 422B                   JMP         @R2
+    000000AA 6EF6                   MOV.L       @R15+,R14
+         Abi19.c    35    }       
+         Abi19.c    36    
+         Abi19.c    37    
+         Abi19.c    38    void draw_main_menu()
+    000000AC              _draw_main_menu:                 ; function: draw_main_menu
+                                                           ; frame size=52
+    000000AC 2FE6                   MOV.L       R14,@-R15
+    000000AE 2FD6                   MOV.L       R13,@-R15
+    000000B0 2FC6                   MOV.L       R12,@-R15
+    000000B2 4F22                   STS.L       PR,@-R15
+         Abi19.c    39    {
+         Abi19.c    40            char * vram = GetVRAMAddress();
+    000000B4 DE65                   MOV.L       L497,R14   ; _sc0135
+    000000B6 4E0B                   JSR         @R14
+    000000B8 0009                   NOP
+    000000BA 6E03                   MOV         R0,R14
+         Abi19.c    41            
+         Abi19.c    42    
+         Abi19.c    43    //Abitur Title
+         Abi19.c    44            //Headline
+         Abi19.c    45            CoolText(2,2,  FONT_SEVEN, "Abitur 2019 | GDP", vram  );
+    000000BC 2F06                   MOV.L       R0,@-R15
+    000000BE E602                   MOV         #2,R6
+    000000C0 D363                   MOV.L       L497+4,R3  ; _CoolText
+    000000C2 6563                   MOV         R6,R5
+    000000C4 D766                   MOV.L       L497+20,R7 ; L410
+    000000C6 430B                   JSR         @R3
+    000000C8 6463                   MOV         R6,R4
+         Abi19.c    46            //Upper Box Line
+         Abi19.c    47            DrawLine(0,0,127,0, vram, 1);           
+    000000CA ED01                   MOV         #1,R13
+    000000CC DC61                   MOV.L       L497+8,R12 ; _DrawLine
+    000000CE E700                   MOV         #0,R7
+    000000D0 2FD6                   MOV.L       R13,@-R15
+    000000D2 E67F                   MOV         #127,R6
+    000000D4 2FE6                   MOV.L       R14,@-R15
+    000000D6 6573                   MOV         R7,R5
+    000000D8 4C0B                   JSR         @R12
+    000000DA 6473                   MOV         R7,R4
+         Abi19.c    48            //Lower Box Line
+         Abi19.c    49            DrawLine(0,10,127,10, vram, 1); 
+    000000DC 2FD6                   MOV.L       R13,@-R15
+    000000DE E70A                   MOV         #10,R7
+    000000E0 2FE6                   MOV.L       R14,@-R15
+    000000E2 E67F                   MOV         #127,R6
+    000000E4 6573                   MOV         R7,R5
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    4
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    000000E6 4C0B                   JSR         @R12
+    000000E8 E400                   MOV         #0,R4
+         Abi19.c    50            //Left Box Line
+         Abi19.c    51            DrawLine(0,0,0,10, vram, 1);    
+    000000EA E70A                   MOV         #10,R7
+    000000EC 2FD6                   MOV.L       R13,@-R15
+    000000EE E600                   MOV         #0,R6
+    000000F0 2FE6                   MOV.L       R14,@-R15
+    000000F2 6563                   MOV         R6,R5
+    000000F4 4C0B                   JSR         @R12
+    000000F6 6463                   MOV         R6,R4
+         Abi19.c    52            //Right Box Line
+         Abi19.c    53            DrawLine(127,0,127,10, vram, 1);        
+    000000F8 2FD6                   MOV.L       R13,@-R15
+    000000FA E70A                   MOV         #10,R7
+    000000FC 2FE6                   MOV.L       R14,@-R15
+    000000FE E67F                   MOV         #127,R6
+    00000100 E500                   MOV         #0,R5
+    00000102 4C0B                   JSR         @R12
+    00000104 6463                   MOV         R6,R4
+    00000106 7F24                   ADD         #36,R15
+         Abi19.c    54    
+         Abi19.c    55    //Abitur Menu Items
+         Abi19.c    56            draw_menu_box(7, 14, "Mathe");
+    00000108 D656                   MOV.L       L497+24,R6 ; L411
+    0000010A E50E                   MOV         #14,R5
+    0000010C BF78                   BSR         _draw_menu_box
+    0000010E E407                   MOV         #7,R4
+         Abi19.c    57            draw_menu_box(7, 27, "Physik");
+    00000110 D655                   MOV.L       L497+28,R6 ; L412
+    00000112 E51B                   MOV         #27,R5
+    00000114 BF74                   BSR         _draw_menu_box
+    00000116 E407                   MOV         #7,R4
+         Abi19.c    58            draw_menu_box(7, 40, "Chemie");
+    00000118 D654                   MOV.L       L497+32,R6 ; L413
+    0000011A E528                   MOV         #40,R5
+    0000011C BF70                   BSR         _draw_menu_box
+    0000011E E407                   MOV         #7,R4
+         Abi19.c    59            
+         Abi19.c    60            draw_menu_box(69, 14, "Informatik");
+    00000120 D653                   MOV.L       L497+36,R6 ; L414
+    00000122 E50E                   MOV         #14,R5
+    00000124 BF6C                   BSR         _draw_menu_box
+    00000126 E445                   MOV         #69,R4
+         Abi19.c    61            draw_menu_box(69, 27, "Biologie");
+    00000128 D652                   MOV.L       L497+40,R6 ; L415
+    0000012A E51B                   MOV         #27,R5
+    0000012C BF68                   BSR         _draw_menu_box
+    0000012E E445                   MOV         #69,R4
+         Abi19.c    62            draw_menu_box(69, 40, "Infos ...");
+    00000130 D651                   MOV.L       L497+44,R6 ; L416
+    00000132 E528                   MOV         #40,R5
+    00000134 BF64                   BSR         _draw_menu_box
+    00000136 E445                   MOV         #69,R4
+         Abi19.c    63            
+         Abi19.c    64            draw_menu_box(77, 52, "Beenden");
+    00000138 D650                   MOV.L       L497+48,R6 ; L417
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    5
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    0000013A E534                   MOV         #52,R5
+    0000013C BF60                   BSR         _draw_menu_box
+    0000013E E44D                   MOV         #77,R4
+         Abi19.c    65            
+         Abi19.c    66            DrawAll(vram);
+    00000140 4F26                   LDS.L       @R15+,PR
+    00000142 64E3                   MOV         R14,R4
+    00000144 D344                   MOV.L       L497+12,R3 ; _DrawAll
+    00000146 6CF6                   MOV.L       @R15+,R12
+    00000148 6DF6                   MOV.L       @R15+,R13
+    0000014A 432B                   JMP         @R3
+    0000014C 6EF6                   MOV.L       @R15+,R14
+         Abi19.c    67    }       
+         Abi19.c    68    
+         Abi19.c    69    void draw_menu_main_select(unsigned int number)
+    0000014E              _draw_menu_main_select:          ; function: draw_menu_main_select
+                                                           ; frame size=20
+    0000014E 2FE6                   MOV.L       R14,@-R15
+    00000150 2FD6                   MOV.L       R13,@-R15
+    00000152 4F22                   STS.L       PR,@-R15
+         Abi19.c    70    {
+         Abi19.c    71            char * vram = GetVRAMAddress();
+    00000154 DE3D                   MOV.L       L497,R14   ; _sc0135
+    00000156 4E0B                   JSR         @R14
+    00000158 2F46                   MOV.L       R4,@-R15
+    0000015A 6E03                   MOV         R0,R14
+         Abi19.c    72            
+         Abi19.c    73            int width = 47;
+         Abi19.c    74            int height = 8;
+         Abi19.c    75            
+         Abi19.c    76            int x = 0;
+         Abi19.c    77            int y = 0;
+         Abi19.c    78            
+         Abi19.c    79            switch(number){
+    0000015C DD48                   MOV.L       L497+52,R13; _InvertArea
+    0000015E 60F2                   MOV.L       @R15,R0
+    00000160 8801                   CMP/EQ      #1,R0
+    00000162 890D                   BT          L462
+    00000164 8803                   CMP/EQ      #3,R0
+    00000166 8910                   BT          L463
+    00000168 8805                   CMP/EQ      #5,R0
+    0000016A 8913                   BT          L464
+    0000016C 8802                   CMP/EQ      #2,R0
+    0000016E 8917                   BT          L465
+    00000170 8804                   CMP/EQ      #4,R0
+    00000172 891B                   BT          L466
+    00000174 8806                   CMP/EQ      #6,R0
+    00000176 891F                   BT          L467
+    00000178 8807                   CMP/EQ      #7,R0
+    0000017A 8923                   BT          L468
+    0000017C A02A                   BRA         L469
+    0000017E 0009                   NOP
+    00000180              L462:                            ; case label 
+         Abi19.c    80            
+         Abi19.c    81                    case 1: 
+         Abi19.c    82                    x = 7;
+         Abi19.c    83                    y = 14;
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    6
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+         Abi19.c    84                    InvertArea(x+1, y+1,  x+width, y+height , vram);
+    00000180 2FE6                   MOV.L       R14,@-R15
+    00000182 E716                   MOV         #22,R7
+    00000184 E636                   MOV         #54,R6
+         Abi19.c    85                    break;
+    00000186 A009                   BRA         L492
+    00000188 E50F                   MOV         #15,R5
+    0000018A              L463:                            ; case label 
+         Abi19.c    86                    
+         Abi19.c    87                    case 3: 
+         Abi19.c    88                    x = 7;
+         Abi19.c    89                    y = 27;
+         Abi19.c    90                    InvertArea(x+1, y+1,  x+width, y+height , vram);
+    0000018A E723                   MOV         #35,R7
+    0000018C 2FE6                   MOV.L       R14,@-R15
+    0000018E E636                   MOV         #54,R6
+         Abi19.c    91                    break;
+    00000190 A004                   BRA         L492
+    00000192 E51C                   MOV         #28,R5
+    00000194              L464:                            ; case label 
+         Abi19.c    92                    
+         Abi19.c    93                    case 5: 
+         Abi19.c    94                    x = 7;
+         Abi19.c    95                    y = 40;
+         Abi19.c    96                    InvertArea(x+1, y+1,  x+width, y+height , vram);
+    00000194 2FE6                   MOV.L       R14,@-R15
+    00000196 E730                   MOV         #48,R7
+    00000198 E636                   MOV         #54,R6
+    0000019A E529                   MOV         #41,R5
+         Abi19.c    97                    break;
+    0000019C              L492:                             
+    0000019C A017                   BRA         L496
+    0000019E E408                   MOV         #8,R4
+    000001A0              L465:                            ; case label 
+         Abi19.c    98                    
+         Abi19.c    99                    case 2: 
+         Abi19.c   100                    x = 69;
+         Abi19.c   101                    y = 14;
+         Abi19.c   102                    InvertArea(x+1, y+1,  x+width, y+height , vram);
+    000001A0 2FE6                   MOV.L       R14,@-R15
+    000001A2 E716                   MOV         #22,R7
+    000001A4 E674                   MOV         #116,R6
+    000001A6 E50F                   MOV         #15,R5
+         Abi19.c   103                    break;
+    000001A8 A011                   BRA         L496
+    000001AA E446                   MOV         #70,R4
+    000001AC              L466:                            ; case label 
+         Abi19.c   104                    
+         Abi19.c   105                    case 4: 
+         Abi19.c   106                    x = 69;
+         Abi19.c   107                    y = 27;
+         Abi19.c   108                    InvertArea(x+1, y+1,  x+width, y+height , vram);
+    000001AC 2FE6                   MOV.L       R14,@-R15
+    000001AE E723                   MOV         #35,R7
+    000001B0 E674                   MOV         #116,R6
+    000001B2 E51C                   MOV         #28,R5
+         Abi19.c   109                    break;
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    7
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    000001B4 A00B                   BRA         L496
+    000001B6 E446                   MOV         #70,R4
+    000001B8              L467:                            ; case label 
+         Abi19.c   110                    
+         Abi19.c   111                    case 6: 
+         Abi19.c   112                    x = 69;
+         Abi19.c   113                    y = 40;
+         Abi19.c   114                    InvertArea(x+1, y+1,  x+width, y+height , vram);
+    000001B8 2FE6                   MOV.L       R14,@-R15
+    000001BA E730                   MOV         #48,R7
+    000001BC E674                   MOV         #116,R6
+    000001BE E529                   MOV         #41,R5
+         Abi19.c   115                    break;
+    000001C0 A005                   BRA         L496
+    000001C2 E446                   MOV         #70,R4
+    000001C4              L468:                            ; case label 
+         Abi19.c   116                    
+         Abi19.c   117                    case 7: 
+         Abi19.c   118                    x = 77;
+         Abi19.c   119                    y = 52;
+         Abi19.c   120                    InvertArea(x+1, y+1,  x+width, y+height , vram);
+    000001C4 2FE6                   MOV.L       R14,@-R15
+    000001C6 E73C                   MOV         #60,R7
+    000001C8 E67C                   MOV         #124,R6
+    000001CA E535                   MOV         #53,R5
+    000001CC E44E                   MOV         #78,R4
+         Abi19.c   121                    break;
+    000001CE              L496:                             
+    000001CE 4D0B                   JSR         @R13
+    000001D0 0009                   NOP
+    000001D2 7F04                   ADD         #4,R15
+    000001D4              L469:                             
+         Abi19.c   122            }
+         Abi19.c   123            
+         Abi19.c   124            DrawAll(vram);
+    000001D4 D220                   MOV.L       L497+12,R2 ; _DrawAll
+    000001D6 64E3                   MOV         R14,R4
+    000001D8 7F04                   ADD         #4,R15
+    000001DA 4F26                   LDS.L       @R15+,PR
+    000001DC 6DF6                   MOV.L       @R15+,R13
+    000001DE 422B                   JMP         @R2
+    000001E0 6EF6                   MOV.L       @R15+,R14
+         Abi19.c   125    }       
+         Abi19.c   126    
+         Abi19.c   127    
+         Abi19.c   128    void draw_tab_info()
+    000001E2              _draw_tab_info:                  ; function: draw_tab_info
+                                                           ; frame size=52
+    000001E2 2FE6                   MOV.L       R14,@-R15
+    000001E4 2FD6                   MOV.L       R13,@-R15
+    000001E6 2FC6                   MOV.L       R12,@-R15
+    000001E8 4F22                   STS.L       PR,@-R15
+         Abi19.c   129    {
+         Abi19.c   130            char * vram = GetVRAMAddress();
+    000001EA DE18                   MOV.L       L497,R14   ; _sc0135
+    000001EC 4E0B                   JSR         @R14
+    000001EE 0009                   NOP
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    8
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+         Abi19.c   131            
+         Abi19.c   132             Bdisp_AllClr_DDVRAM();
+    000001F0 D324                   MOV.L       L497+56,R3 ; _Bdisp_AllClr_DDVRAM
+    000001F2 430B                   JSR         @R3
+    000001F4 6E03                   MOV         R0,R14
+         Abi19.c   133    
+         Abi19.c   134    //Infos Title
+         Abi19.c   135            //Headline
+         Abi19.c   136            CoolText(2,2,  FONT_SEVEN, "Infos ...", vram  );
+    000001F6 E602                   MOV         #2,R6
+    000001F8 D215                   MOV.L       L497+4,R2  ; _CoolText
+    000001FA 6563                   MOV         R6,R5
+    000001FC 2FE6                   MOV.L       R14,@-R15
+    000001FE D71E                   MOV.L       L497+44,R7 ; L416
+    00000200 420B                   JSR         @R2
+    00000202 6463                   MOV         R6,R4
+         Abi19.c   137            //Upper Box Line
+         Abi19.c   138            DrawLine(0,0,127,0, vram, 1);           
+    00000204 DC13                   MOV.L       L497+8,R12 ; _DrawLine
+    00000206 ED01                   MOV         #1,R13
+    00000208 2FD6                   MOV.L       R13,@-R15
+    0000020A E700                   MOV         #0,R7
+    0000020C 2FE6                   MOV.L       R14,@-R15
+    0000020E E67F                   MOV         #127,R6
+    00000210 6573                   MOV         R7,R5
+    00000212 4C0B                   JSR         @R12
+    00000214 6473                   MOV         R7,R4
+         Abi19.c   139            //Lower Box Line
+         Abi19.c   140            DrawLine(0,10,127,10, vram, 1); 
+    00000216 E70A                   MOV         #10,R7
+    00000218 2FD6                   MOV.L       R13,@-R15
+    0000021A E67F                   MOV         #127,R6
+    0000021C 2FE6                   MOV.L       R14,@-R15
+    0000021E 6573                   MOV         R7,R5
+    00000220 4C0B                   JSR         @R12
+    00000222 E400                   MOV         #0,R4
+         Abi19.c   141            //Left Box Line
+         Abi19.c   142            DrawLine(0,0,0,10, vram, 1);    
+    00000224 2FD6                   MOV.L       R13,@-R15
+    00000226 E70A                   MOV         #10,R7
+    00000228 2FE6                   MOV.L       R14,@-R15
+    0000022A E600                   MOV         #0,R6
+    0000022C 6563                   MOV         R6,R5
+    0000022E 4C0B                   JSR         @R12
+    00000230 6463                   MOV         R6,R4
+         Abi19.c   143            //Right Box Line
+         Abi19.c   144            DrawLine(127,0,127,10, vram, 1);        
+    00000232 E70A                   MOV         #10,R7
+    00000234 2FD6                   MOV.L       R13,@-R15
+    00000236 E67F                   MOV         #127,R6
+    00000238 2FE6                   MOV.L       R14,@-R15
+    0000023A E500                   MOV         #0,R5
+    0000023C 4C0B                   JSR         @R12
+    0000023E 6463                   MOV         R6,R4
+         Abi19.c   145    
+         Abi19.c   146    }       
+    00000240 7F24                   ADD         #36,R15
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    9
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    00000242 4F26                   LDS.L       @R15+,PR
+    00000244 6CF6                   MOV.L       @R15+,R12
+    00000246 6DF6                   MOV.L       @R15+,R13
+    00000248 000B                   RTS
+    0000024A 6EF6                   MOV.L       @R15+,R14
+    0000024C              L497:                             
+    0000024C <00000000>             .DATA.L     _sc0135
+    00000250 <00000000>             .DATA.L     _CoolText
+    00000254 <00000000>             .DATA.L     _DrawLine
+    00000258 <00000000>             .DATA.L     _DrawAll
+    0000025C <00000000>             .DATA.L     _memset
+    00000260 <00000000>             .DATA.L     L410
+    00000264 <00000000>             .DATA.L     L411
+    00000268 <00000000>             .DATA.L     L412
+    0000026C <00000000>             .DATA.L     L413
+    00000270 <00000000>             .DATA.L     L414
+    00000274 <00000000>             .DATA.L     L415
+    00000278 <00000000>             .DATA.L     L416
+    0000027C <00000000>             .DATA.L     L417
+    00000280 <00000000>             .DATA.L     _InvertArea
+    00000284 <00000000>             .DATA.L     _Bdisp_AllClr_DDVRAM
+         Abi19.c   147    
+         Abi19.c   148    
+         Abi19.c   149    int AddIn_main(int isAppli, unsigned short OptionNum)
+    00000288              _AddIn_main:                     ; function: AddIn_main
+                                                           ; frame size=36
+    00000288 2FE6                   MOV.L       R14,@-R15
+    0000028A 2FD6                   MOV.L       R13,@-R15
+    0000028C 2FC6                   MOV.L       R12,@-R15
+         Abi19.c   150    {
+         Abi19.c   151    
+         Abi19.c   152            int menu_point = 1;
+    0000028E EC01                   MOV         #1,R12
+         Abi19.c   153    
+         Abi19.c   154             Bdisp_AllClr_DDVRAM();
+    00000290 D325                   MOV.L       L498+12,R3 ; _Bdisp_AllClr_DDVRAM
+    00000292 2FB6                   MOV.L       R11,@-R15
+    00000294 2FA6                   MOV.L       R10,@-R15
+    00000296 2F96                   MOV.L       R9,@-R15
+    00000298 2F86                   MOV.L       R8,@-R15
+    0000029A 4F22                   STS.L       PR,@-R15
+    0000029C 7FFC                   ADD         #-4,R15
+    0000029E 430B                   JSR         @R3
+    000002A0 6EC3                   MOV         R12,R14
+         Abi19.c   155            
+         Abi19.c   156            draw_main_menu();
+    000002A2 BF03                   BSR         _draw_main_menu
+    000002A4 0009                   NOP
+         Abi19.c   157            draw_menu_main_select(1);
+    000002A6 BF52                   BSR         _draw_menu_main_select
+    000002A8 64E3                   MOV         R14,R4
+    000002AA 9837                   MOV.W       L498,R8    ; H'7544
+    000002AC 9A37                   MOV.W       L498+2,R10 ; H'7547
+    000002AE 6983                   MOV         R8,R9
+    000002B0 9B36                   MOV.W       L498+4,R11 ; H'0095
+    000002B2 7901                   ADD         #1,R9
+    000002B4 DD1D                   MOV.L       L498+16,R13; _key
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE   10
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+         Abi19.c   158     
+         Abi19.c   159            while(1) 
+    000002B6              L471:                             
+         Abi19.c   160            {
+         Abi19.c   161                    GetKey(&key);
+    000002B6 D41D                   MOV.L       L498+16,R4 ; _key
+    000002B8 D31D                   MOV.L       L498+20,R3 ; _GetKey
+    000002BA 430B                   JSR         @R3
+    000002BC 0009                   NOP
+    000002BE 64D2                   MOV.L       @R13,R4
+    000002C0 34B0                   CMP/EQ      R11,R4
+    000002C2 8903                   BT          L473
+    000002C4 932D                   MOV.W       L498+6,R3  ; H'7532
+    000002C6 62D2                   MOV.L       @R13,R2
+    000002C8 3230                   CMP/EQ      R3,R2
+    000002CA 8B01                   BF          L472
+    000002CC              L473:                             
+         Abi19.c   162                    if(KEY_CHAR_LOG == key || KEY_CTRL_EXIT == key) return 1;
+    000002CC A06A                   BRA         L474
+    000002CE E001                   MOV         #1,R0
+    000002D0              L472:                             
+         Abi19.c   163                    
+         Abi19.c   164                    if(KEY_CTRL_UP == key)
+    000002D0 9328                   MOV.W       L498+8,R3  ; H'7542
+    000002D2 3430                   CMP/EQ      R3,R4
+    000002D4 8B14                   BF          L475
+         Abi19.c   165                    {
+         Abi19.c   166                            if(menu_point == 7)
+    000002D6 60E3                   MOV         R14,R0
+    000002D8 8807                   CMP/EQ      #7,R0
+    000002DA 8B07                   BF          L476
+         Abi19.c   167                            {
+         Abi19.c   168                                    draw_menu_main_select(menu_point);
+    000002DC BF37                   BSR         _draw_menu_main_select
+    000002DE 64E3                   MOV         R14,R4
+         Abi19.c   169                                    draw_menu_main_select(menu_point - 1);
+    000002E0 64E3                   MOV         R14,R4
+    000002E2 74FF                   ADD         #-1,R4
+    000002E4 BF33                   BSR         _draw_menu_main_select
+    000002E6 2F42                   MOV.L       R4,@R15
+         Abi19.c   170                                    menu_point = menu_point - 1;
+    000002E8 A00A                   BRA         L475
+    000002EA 6EF2                   MOV.L       @R15,R14
+    000002EC              L476:                             
+         Abi19.c   171                            }
+         Abi19.c   172                            else if(menu_point > 2)
+    000002EC E202                   MOV         #2,R2
+    000002EE 3E27                   CMP/GT      R2,R14
+    000002F0 8B06                   BF          L475
+         Abi19.c   173                            {
+         Abi19.c   174                                    draw_menu_main_select(menu_point);
+    000002F2 BF2C                   BSR         _draw_menu_main_select
+    000002F4 64E3                   MOV         R14,R4
+         Abi19.c   175                                    draw_menu_main_select(menu_point - 2);
+    000002F6 64E3                   MOV         R14,R4
+    000002F8 74FE                   ADD         #-2,R4
+    000002FA BF28                   BSR         _draw_menu_main_select
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE   11
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    000002FC 2F42                   MOV.L       R4,@R15
+         Abi19.c   176                                    menu_point = menu_point - 2;
+    000002FE 6EF2                   MOV.L       @R15,R14
+    00000300              L475:                             
+         Abi19.c   177                            }
+         Abi19.c   178    
+         Abi19.c   179                    }
+         Abi19.c   180                    
+         Abi19.c   181                    if(KEY_CTRL_DOWN == key)
+    00000300 63D2                   MOV.L       @R13,R3
+    00000302 33A0                   CMP/EQ      R10,R3
+    00000304 8B20                   BF          L479
+         Abi19.c   182                    {
+         Abi19.c   183                            if(menu_point == 6)
+    00000306 60E3                   MOV         R14,R0
+    00000308 8806                   CMP/EQ      #6,R0
+    0000030A 8B13                   BF          L480
+         Abi19.c   184                            {
+         Abi19.c   185                                    draw_menu_main_select(menu_point);
+    0000030C BF1F                   BSR         _draw_menu_main_select
+    0000030E 64E3                   MOV         R14,R4
+         Abi19.c   186                                    draw_menu_main_select(menu_point + 1);
+    00000310 64E3                   MOV         R14,R4
+    00000312 7401                   ADD         #1,R4
+    00000314 BF1B                   BSR         _draw_menu_main_select
+    00000316 2F42                   MOV.L       R4,@R15
+         Abi19.c   187                                    menu_point = menu_point + 1;
+    00000318 A016                   BRA         L479
+    0000031A 6EF2                   MOV.L       @R15,R14
+    0000031C              L498:                             
+    0000031C 7544                   .DATA.W     H'7544
+    0000031E 7547                   .DATA.W     H'7547
+    00000320 0095                   .DATA.W     H'0095
+    00000322 7532                   .DATA.W     H'7532
+    00000324 7542                   .DATA.W     H'7542
+    00000326 0000                   .DATA.W     0
+    00000328 <00000000>             .DATA.L     _Bdisp_AllClr_DDVRAM
+    0000032C <00000000>             .DATA.L     _key
+    00000330 <00000000>             .DATA.L     _GetKey
+    00000334              L480:                             
+         Abi19.c   188                            }
+         Abi19.c   189                            else if(menu_point < 5)
+    00000334 E205                   MOV         #5,R2
+    00000336 3E23                   CMP/GE      R2,R14
+    00000338 8906                   BT          L479
+         Abi19.c   190                            {
+         Abi19.c   191                                    draw_menu_main_select(menu_point);
+    0000033A BF08                   BSR         _draw_menu_main_select
+    0000033C 64E3                   MOV         R14,R4
+         Abi19.c   192                                    draw_menu_main_select(menu_point + 2);
+    0000033E 64E3                   MOV         R14,R4
+    00000340 7402                   ADD         #2,R4
+    00000342 BF04                   BSR         _draw_menu_main_select
+    00000344 2F42                   MOV.L       R4,@R15
+         Abi19.c   193                                    menu_point = menu_point + 2;
+    00000346 6EF2                   MOV.L       @R15,R14
+    00000348              L479:                             
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE   12
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+         Abi19.c   194                            }
+         Abi19.c   195            
+         Abi19.c   196                    }       
+         Abi19.c   197                    
+         Abi19.c   198                    if(KEY_CTRL_LEFT == key)
+    00000348 63D2                   MOV.L       @R13,R3
+    0000034A 3380                   CMP/EQ      R8,R3
+    0000034C 8B08                   BF          L483
+         Abi19.c   199                    {
+         Abi19.c   200                            if(menu_point > 1)
+    0000034E 3EC7                   CMP/GT      R12,R14
+    00000350 8B06                   BF          L483
+         Abi19.c   201                            {
+         Abi19.c   202                                    draw_menu_main_select(menu_point);
+    00000352 BEFC                   BSR         _draw_menu_main_select
+    00000354 64E3                   MOV         R14,R4
+         Abi19.c   203                                    draw_menu_main_select(menu_point - 1);
+    00000356 64E3                   MOV         R14,R4
+    00000358 74FF                   ADD         #-1,R4
+    0000035A BEF8                   BSR         _draw_menu_main_select
+    0000035C 2F42                   MOV.L       R4,@R15
+         Abi19.c   204                                    menu_point = menu_point - 1;
+    0000035E 6EF2                   MOV.L       @R15,R14
+    00000360              L483:                             
+         Abi19.c   205                            }
+         Abi19.c   206                    }
+         Abi19.c   207                    
+         Abi19.c   208                    if(KEY_CTRL_RIGHT == key)
+    00000360 63D2                   MOV.L       @R13,R3
+    00000362 3390                   CMP/EQ      R9,R3
+    00000364 8B09                   BF          L485
+         Abi19.c   209                    {
+         Abi19.c   210                            if(menu_point  < 7)
+    00000366 E107                   MOV         #7,R1
+    00000368 3E13                   CMP/GE      R1,R14
+    0000036A 8906                   BT          L485
+         Abi19.c   211                            {
+         Abi19.c   212                                    draw_menu_main_select(menu_point);
+    0000036C BEEF                   BSR         _draw_menu_main_select
+    0000036E 64E3                   MOV         R14,R4
+         Abi19.c   213                                    draw_menu_main_select(menu_point + 1);
+    00000370 64E3                   MOV         R14,R4
+    00000372 7401                   ADD         #1,R4
+    00000374 BEEB                   BSR         _draw_menu_main_select
+    00000376 2F42                   MOV.L       R4,@R15
+         Abi19.c   214                                    menu_point = menu_point + 1;
+    00000378 6EF2                   MOV.L       @R15,R14
+    0000037A              L485:                             
+         Abi19.c   215                            }
+         Abi19.c   216                    }
+         Abi19.c   217                    
+         Abi19.c   218                    if(KEY_CTRL_EXE == key)
+    0000037A 931D                   MOV.W       L499,R3    ; H'7534
+    0000037C 62D2                   MOV.L       @R13,R2
+    0000037E 3230                   CMP/EQ      R3,R2
+    00000380 8B99                   BF          L471
+         Abi19.c   219                    {
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE   13
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+         Abi19.c   220                            if(menu_point  == 0)
+    00000382 2EE8                   TST         R14,R14
+    00000384 8B07                   BF          L488
+         Abi19.c   221                            {
+         Abi19.c   222                                     Bdisp_AllClr_DDVRAM();
+    00000386 D10D                   MOV.L       L499+4,R1  ; _Bdisp_AllClr_DDVRAM
+    00000388 410B                   JSR         @R1
+    0000038A 0009                   NOP
+         Abi19.c   223                                    draw_main_menu();
+    0000038C BE8E                   BSR         _draw_main_menu
+    0000038E 0009                   NOP
+         Abi19.c   224                                    menu_point = 1;
+    00000390 6EC3                   MOV         R12,R14
+         Abi19.c   225                                    draw_menu_main_select(menu_point);
+    00000392 BEDC                   BSR         _draw_menu_main_select
+    00000394 E401                   MOV         #1,R4
+    00000396              L488:                             
+         Abi19.c   226                            }
+         Abi19.c   227                            if(menu_point  == 6)
+    00000396 60E3                   MOV         R14,R0
+    00000398 8806                   CMP/EQ      #6,R0
+    0000039A 8B8C                   BF          L471
+         Abi19.c   228                            {
+         Abi19.c   229                                    menu_point = 0;
+         Abi19.c   230                                    draw_tab_info();
+    0000039C BF21                   BSR         _draw_tab_info
+    0000039E EE00                   MOV         #0,R14
+    000003A0 AF89                   BRA         L471
+    000003A2 0009                   NOP
+    000003A4              L474:                             
+         Abi19.c   231                            }
+         Abi19.c   232                    }
+         Abi19.c   233            }
+         Abi19.c   234    }
+    000003A4 7F04                   ADD         #4,R15
+    000003A6 4F26                   LDS.L       @R15+,PR
+    000003A8 68F6                   MOV.L       @R15+,R8
+    000003AA 69F6                   MOV.L       @R15+,R9
+    000003AC 6AF6                   MOV.L       @R15+,R10
+    000003AE 6BF6                   MOV.L       @R15+,R11
+    000003B0 6CF6                   MOV.L       @R15+,R12
+    000003B2 6DF6                   MOV.L       @R15+,R13
+    000003B4 000B                   RTS
+    000003B6 6EF6                   MOV.L       @R15+,R14
+    000003B8              L499:                             
+    000003B8 7534                   .DATA.W     H'7534
+    000003BA 0000                   .DATA.W     0
+    000003BC <00000000>             .DATA.L     _Bdisp_AllClr_DDVRAM
+         Abi19.c   235    
+         Abi19.c   236    
+         Abi19.c   237    #pragma section _BR_Size
+         Abi19.c   238    unsigned long BR_Size;
+         Abi19.c   239    #pragma section
+         Abi19.c   240    
+         Abi19.c   241    
+         Abi19.c   242    #pragma section _TOP
+         Abi19.c   243    
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE   14
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+         Abi19.c   244    int InitializeSystem(int isAppli, unsigned short OptionNum)
+P_T 00000000              _InitializeSystem:               ; function: InitializeSystem
+                                                           ; frame size=0
+         Abi19.c   245    {
+         Abi19.c   246        return INIT_ADDIN_APPLICATION(isAppli, OptionNum);
+    00000000 D301                   MOV.L       L500+2,R3  ; _INIT_ADDIN_APPLICATION
+    00000002 432B                   JMP         @R3
+    00000004 0009                   NOP
+    00000006              L500:                             
+    00000006 0000                   .DATA.W     0
+    00000008 <00000000>             .DATA.L     _INIT_ADDIN_APPLICATION
+         Abi19.c   247    }
+         Abi19.c   248    
+         Abi19.c   249    #pragma section
+C   00000000              _sc0135:                         ; static: sc0135
+    00000000 D201D00242             .DATA.L     H'D201D002,H'422B0009,H'80010070,H'00000135
+             2B00098001   
+             0070000001   
+             35           
+    00000010              L410:
+    00000010 4162697475             .SDATA      "Abitur 2019 | GDP"
+             7220323031   
+             39207C2047   
+             4450         
+    00000021 00                     .DATA.B     H'00
+    00000022 00000002               .RES.W      1
+    00000024              L411:
+    00000024 4D61746865             .SDATA      "Mathe"
+    00000029 00                     .DATA.B     H'00
+    0000002A 00000002               .RES.W      1
+    0000002C              L412:
+    0000002C 5068797369             .SDATA      "Physik"
+             6B           
+    00000032 00                     .DATA.B     H'00
+    00000033 00000001               .RES.B      1
+    00000034              L413:
+    00000034 4368656D69             .SDATA      "Chemie"
+             65           
+    0000003A 00                     .DATA.B     H'00
+    0000003B 00000001               .RES.B      1
+    0000003C              L414:
+    0000003C 496E666F72             .SDATA      "Informatik"
+             6D6174696B   
+    00000046 00                     .DATA.B     H'00
+    00000047 00000001               .RES.B      1
+    00000048              L415:
+    00000048 42696F6C6F             .SDATA      "Biologie"
+             676965       
+    00000050 00                     .DATA.B     H'00
+    00000051 00000001               .RES.B      1
+    00000052 00000002               .RES.W      1
+    00000054              L416:
+    00000054 496E666F73             .SDATA      "Infos ..."
+             202E2E2E     
+    0000005D 00                     .DATA.B     H'00
+    0000005E 00000002               .RES.W      1
+    00000060              L417:
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE   15
+
+
+SCT OFFSET   CODE       C LABEL     INSTRUCTION OPERAND    COMMENT
+
+    00000060 4265656E64             .SDATA      "Beenden"
+             656E         
+    00000067 00                     .DATA.B     H'00
+B   00000000              _key:                            ; static: key
+    00000000 00000004               .RES.L      1
+B_B 00000000              _BR_Size:                        ; static: BR_Size
+    00000000 00000004               .RES.L      1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SH SERIES C/C++ Compiler (Ver. 6.0C)                                                                 13-Aug-2018 22:54:54  PAGE    1
+
+
+******** STATISTICS INFORMATION ********
+
+
+********** ERROR INFORMATION ***********
+
+NUMBER OF ERRORS:           0
+NUMBER OF WARNINGS:        34
+
+
+
+
+******* SOURCE LINE INFORMATION ********
+
+COMPILED SOURCE LINE:      249
+
+
+
+******* SECTION SIZE INFORMATION *******
+
+PROGRAM  SECTION (P):                               000003C0 Byte(s)
+PROGRAM  SECTION (P_BR_Size):                       00000000 Byte(s)
+PROGRAM  SECTION (P_TOP):                           0000000C Byte(s)
+CONSTANT SECTION (C):                               00000068 Byte(s)
+CONSTANT SECTION (C_BR_Size):                       00000000 Byte(s)
+CONSTANT SECTION (C_TOP):                           00000000 Byte(s)
+DATA     SECTION (D):                               00000000 Byte(s)
+DATA     SECTION (D_BR_Size):                       00000000 Byte(s)
+DATA     SECTION (D_TOP):                           00000000 Byte(s)
+BSS      SECTION (B):                               00000004 Byte(s)
+BSS      SECTION (B_BR_Size):                       00000004 Byte(s)
+BSS      SECTION (B_TOP):                           00000000 Byte(s)
+
+ TOTAL PROGRAM SIZE: 0000043C Byte(s)
+
+
+
+********** LABEL INFORMATION ***********
+
+NUMBER OF EXTERNAL REFERENCE SYMBOLS:            8
+NUMBER OF EXTERNAL DEFINITION SYMBOLS:           9
+NUMBER OF INTERNAL/EXTERNAL SYMBOLS:            50
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*** COMMAND PARAMETER ***
+
+
+  -subcommand=C:\Users\zocke\AppData\Local\Temp\hmk520E.tmp 
+

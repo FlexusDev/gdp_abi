@@ -1,0 +1,298 @@
+Hitachi Optimizing Linkage Editor (Ver. 7.1.03.000)13-Aug-2018 22:54:54
+
+*** Options ***
+
+-subcommand=C:\Users\zocke\AppData\Local\Temp\hmk52FA.tmp
+noprelink
+sdebug
+rom D=R
+nomessage
+list "G:\Coding\GTR\gdp_abi\Debug\FXADDINror.map"
+show symbol
+nooptimize
+start P_TOP,P,C,D,C$VTBL,C$INIT/0300200,B_BR_Size,B,R/08100000
+fsymbol P
+nologo
+input "G:\Coding\GTR\gdp_abi\Debug\Abi19.obj"
+input "G:\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj"
+library "G:\CASIO\fx-9860G SDK\OS\FX\lib\fx9860G_library.lib"
+library "G:\CASIO\fx-9860G SDK\OS\FX\lib\revolution.lib"
+output "G:\Coding\GTR\gdp_abi\Debug\FXADDINror.abs"
+-nomessage=1100
+end
+
+*** Error information ***
+
+*** Mapping List ***
+
+SECTION                            START      END         SIZE   ALIGN
+
+P_TOP
+                                  00300200  0030020b         c   4
+P
+                                  0030020c  003013bd      11b2   4
+C
+                                  003013c0  0030284d      148e   4
+D
+                                  00302850  00302889        3a   4
+B_BR_Size
+                                  08100000  08100003         4   4
+B
+                                  08100004  08100007         4   4
+R
+                                  08100008  08100041        3a   4
+
+*** Symbol List ***
+
+SECTION=
+FILE=                               START        END    SIZE
+  SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
+
+SECTION=P_TOP
+FILE=G:\Coding\GTR\gdp_abi\Debug\Abi19.obj
+                                  00300200  0030020b         c
+  _InitializeSystem
+                                  00300200         c   func ,g         * 
+
+SECTION=P
+FILE=G:\Coding\GTR\gdp_abi\Debug\Abi19.obj
+                                  0030020c  003005cb       3c0
+  _draw_menu_box
+                                  0030020c        ac   func ,g         * 
+  _draw_main_menu
+                                  003002b8        a2   func ,g         * 
+  _draw_menu_main_select
+                                  0030035a        94   func ,g         * 
+  _draw_tab_info
+                                  003003ee        a6   func ,g         * 
+  _AddIn_main
+                                  00300494       138   func ,g         * 
+FILE=G:\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj
+                                  003005cc  003006e7       11c
+  ___LINK_PROTECT
+                                  003005cc         4   func ,g         * 
+  _SetQuitHandler
+                                  003005d0         6   func ,g         * 
+  _OnAppCloseDefault
+                                  003005d6        54   func ,g         * 
+  __INITSCT_ADDIN
+                                  0030062a        48   func ,g         * 
+  _INIT_ADDIN_APPLICATION
+                                  00300672        76   func ,g         * 
+FILE=memset
+                                  003006e8  003006ff        18
+  _memset
+                                  003006e8        18   func ,g         * 
+FILE=_Bdel_cychdr
+                                  00300700  0030070f        10
+  _Bdel_cychdr
+                                  00300700         0   none ,g         * 
+FILE=_Bdisp_AllClr_DDVRAM
+                                  00300710  0030071f        10
+  _Bdisp_AllClr_DDVRAM
+                                  00300710         0   none ,g         * 
+FILE=_BfileFLS_CloseFile
+                                  00300720  0030072f        10
+  _BfileFLS_CloseFile
+                                  00300720         0   none ,g         * 
+FILE=_Bkey_Set_RepeatTime_Default
+                                  00300730  0030073f        10
+  _Bkey_Set_RepeatTime_Default
+                                  00300730         0   none ,g         * 
+FILE=_CallbackAtQuitMainFunction
+                                  00300740  0030074f        10
+  _CallbackAtQuitMainFunction
+                                  00300740         0   none ,g         * 
+FILE=_flsFindClose
+                                  00300750  0030075f        10
+  _flsFindClose
+                                  00300750         0   none ,g         * 
+FILE=_getkey
+                                  00300760  0030076f        10
+  _GetKey
+                                  00300760         0   none ,g         * 
+FILE=_GLibAddinAplExecutionCheck
+                                  00300770  0030077f        10
+  _GLibAddinAplExecutionCheck
+                                  00300770         0   none ,g         * 
+FILE=_Hmem_SetMMU
+                                  00300780  0030078f        10
+  _Hmem_SetMMU
+                                  00300780         0   none ,g         * 
+FILE=graphics
+                                  00300790  0030119b       a0c
+  _GetPixel
+                                  00300790        2a   func ,g         * 
+  _PlotPixel
+                                  003007ba        82   func ,g         * 
+  _DrawLine
+                                  0030083c       1e4   func ,g         * 
+  _ClearArea
+                                  00300a20       142   func ,g         * 
+  _InvertArea
+                                  00300b62       13a   func ,g         * 
+  _DrawSprite
+                                  00300c9c       14e   func ,g         * 
+  _CoolText
+                                  00300dea       3b2   func ,g         * 
+FILE=revolution_asm
+                                  0030119c  003013ad       212
+  _CopyVRAM
+                                  0030119c         0   none ,g         * 
+  CopyByte
+                                  003011ac         0   none ,l         * 
+  _DrawAll
+                                  003011d0         0   none ,g         * 
+  SelectLine
+                                  003011ee         0   none ,l         * 
+  WriteLine
+                                  00301200         0   none ,l         * 
+  _Change_Contrast
+                                  00301228         0   none ,g         * 
+  _Reset_Calc
+                                  00301240         0   none ,g         * 
+  _Setup_Serial
+                                  0030124c         0   none ,g         * 
+  _FastKeyDown
+                                  00301274         0   none ,g         * 
+  CodeCheck
+                                  003012ac         0   none ,l         * 
+  PortCheck
+                                  003012b0         0   none ,l         * 
+  CheckFlag
+                                  003012e0         0   none ,l         * 
+  KeyFinish
+                                  003012e6         0   none ,l         * 
+  KeyExit
+                                  003012fc         0   none ,l         * 
+  KeyDatMov
+                                  00301314         0   none ,l         * 
+  KeyDatLoop
+                                  00301322         0   none ,l         * 
+  KeyDatFin
+                                  00301344         0   none ,l         * 
+  KeyHelp
+                                  0030134c         0   none ,l         * 
+  KeyAssist
+                                  00301350         0   none ,l         * 
+  KeyDataSt
+                                  00301354         0   none ,l         * 
+  _FastGetKey
+                                  00301364         0   none ,g         * 
+  StartLoop
+                                  0030137c         0   none ,l         * 
+  CheckKey
+                                  00301380         0   none ,l         * 
+  LoopIncrement
+                                  0030138c         0   none ,l         * 
+  LoopCheck
+                                  00301398         0   none ,l         * 
+  FastGetKeyExit
+                                  0030139e         0   none ,l         * 
+FILE=abs
+                                  003013b0  003013bd         e
+  _abs
+                                  003013b0         e   func ,g         * 
+
+SECTION=C
+FILE=G:\Coding\GTR\gdp_abi\Debug\Abi19.obj
+                                  003013c0  00301427        68
+  _sc0135
+                                  003013c0        10   data ,g         * 
+FILE=addin_sct
+                                  00301428  0030143b        14
+  _B_BGN
+                                  00301428         0   none ,g         * 
+  _B_END
+                                  0030142c         0   none ,g         * 
+  _R_BGN
+                                  00301430         0   none ,g         * 
+  _R_END
+                                  00301434         0   none ,g         * 
+  _D_ROM
+                                  00301438         0   none ,g         * 
+FILE=graphics
+                                  0030143c  0030284d      1412
+  _five_dot_font_table
+                                  0030143c       299   data ,g         * 
+  _five_dot_width_table
+                                  003016d5        5f   data ,g         * 
+  _six_dot_font_table
+                                  00301734       5f0   data ,g         * 
+  _six_dot_width_table
+                                  00301d24        5f   data ,g         * 
+  _seven_dot_font_table
+                                  00301d83       5f0   data ,g         * 
+  _seven_dot_width_table
+                                  00302373        5f   data ,g         * 
+  _nine_dot_font_table
+                                  003023d2       474   data ,g         * 
+  _mask_array
+                                  00302846         8   data ,g         * 
+
+SECTION=B_BR_Size
+FILE=G:\Coding\GTR\gdp_abi\Debug\Abi19.obj
+                                  08100000  08100003         4
+  _BR_Size
+                                  08100000         4   data ,g         * 
+
+SECTION=B
+FILE=G:\Coding\GTR\gdp_abi\Debug\Abi19.obj
+                                  08100004  08100007         4
+  _key
+                                  08100004         4   data ,g         * 
+
+SECTION=R
+FILE=G:\CASIO\fx-9860G SDK\OS\FX\lib\setup.obj
+                                  08100008  0810000b         4
+  _gb_OnAppClose
+                                  08100008         4   data ,g         * 
+FILE=graphics
+                                  0810000c  08100041        36
+  _info_text
+                                  0810000c        36   data ,g         * 
+
+Absolute value symbols
+FILE=_Bdel_cychdr
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bdisp_AllClr_DDVRAM
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_BfileFLS_CloseFile
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Bkey_Set_RepeatTime_Default
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_CallbackAtQuitMainFunction
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_flsFindClose
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_getkey
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_GLibAddinAplExecutionCheck
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+FILE=_Hmem_SetMMU
+  __JumpTableTOP
+                                  80010070         0   none ,l         * 
+
+*** Delete Symbols ***
+
+SYMBOL                                SIZE    INFO
+
+*** Variable Accessible with Abs8 ***
+
+SYMBOL                                SIZE    COUNTS  OPTIMIZE
+
+*** Variable Accessible with Abs16 ***
+
+SYMBOL                                SIZE    COUNTS  OPTIMIZE
+
+*** Function Call ***
+
+SYMBOL                              COUNTS  OPTIMIZE
